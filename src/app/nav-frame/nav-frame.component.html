@@ -1,0 +1,49 @@
+<mat-sidenav-container class="sidenav-container" >
+  <img src="/src/images/header.png" alt="qwe"/>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport 
+      >
+    <mat-toolbar>Меню</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Животные</a>
+      <a mat-list-item href="#">Стать волонтёром</a>
+      <a mat-list-item href="#">Личный кабинет</a>
+      <a mat-list-item href="#">Контакты</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">  
+      <button 
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+    <div fxFlex fxLayout fxLayoutAlign="center" fxHide.lt-md >
+      <ul fxLayout="row" class="navigation-items" fxLayoutAlign="space-evenly"> 
+        <li>
+          <a routerLink="/">Главная</a>
+      </li>
+        <li>
+              <a routerLink="/animals">Животные</a>
+          </li>
+          <li>
+              <a routerLink="/volunteer">Стать волонтёром</a>
+          </li>
+        <li>
+          <a routerLink="/logged">Личный кабинет</a>
+      </li>
+      <li>
+        <a routerLink="/contacts">Контакты</a>
+    </li>
+      </ul>
+  </div>
+
+    </mat-toolbar>
+  
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+  <img/>
+</mat-sidenav-container>
