@@ -20,12 +20,22 @@ import { MatCardModule } from '@angular/material/card';
 import { RestService } from './services/rest.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormControlsModule} from './core/form-controls/form-controls.module';
-import { FormsModule } from '@angular/forms';
-import { RegComponent } from './reg/reg.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegComponent,CustomSnackBarComponent } from './reg/reg.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { VolunteerComponent } from './volunteer/volunteer.component';
 import { AnimalsComponent } from './animals/animals.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MatFormFieldModule} from '@angular/material';
+import { MatStepperModule} from '@angular/material';
+import { MatSelectModule} from '@angular/material';
+import { MatSnackBarModule} from '@angular/material';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material';
+import {MatPaginatorModule} from '@angular/material';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +47,10 @@ import { ProfileComponent } from './profile/profile.component';
     VolunteerComponent,
     AnimalsComponent,
     ProfileComponent,
+    CustomSnackBarComponent,
+  
   ],
+  entryComponents:[CustomSnackBarComponent, AnimalsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -54,7 +67,15 @@ import { ProfileComponent } from './profile/profile.component';
     MatCardModule,
     HttpClientModule,
     FormControlsModule,
-    FormsModule
+    FormsModule, 
+    MatFormFieldModule, 
+    MatStepperModule,
+    MatSelectModule, 
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatPaginatorModule
   ],
   providers: [
     RestService

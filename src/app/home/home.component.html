@@ -1,11 +1,67 @@
 <app-nav-frame (sidenavToggle)="sidenav.toggle()"></app-nav-frame>
-<mat-grid-list cols="4" gutterSize="20px">
-    <mat-grid-tile >Tile 1</mat-grid-tile>
-    <mat-grid-tile >Tile 2</mat-grid-tile >
-    <mat-grid-tile >Tile 3</mat-grid-tile >
-    <mat-grid-tile >Tile 4</mat-grid-tile >
-    <mat-grid-tile >Tile 5</mat-grid-tile >
-    <mat-grid-tile >Tile 6</mat-grid-tile >
-    <mat-grid-tile >Tile 7</mat-grid-tile >
-    <mat-grid-tile >Tile 8</mat-grid-tile >
-  </mat-grid-list>
+<div class="container">
+  <div class="header">
+      Добро пожаловать!
+  </div>
+  <div class="content">
+      <div class="real-img"></div>
+      <div class="header">На нашем сайте вы можете:</div>
+  </div>  
+<div class="tabl-info">
+    <a class="cont-card">
+    <mat-card class="info-card">
+        <mat-card-header>
+            <mat-card-title >Взять питомца</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                В нашем приюте вас ждут самые разные животные, которые нуждаются в доме, ласке и заботе. 
+                Все животные привиты и ухожены. 
+                Мы не хотим что бы животные попали в плохие руки, 
+                поэтому если вы решили забрать животное оставьте заявку на сайти или приходите к нам в приют.
+            </p>
+        </mat-card-content>
+      </mat-card>
+    </a>
+    <a class="cont-card">
+      <mat-card class="info-card">
+        <mat-card-header>
+            <mat-card-title>Отдать питомца</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+                Если больше нет возможности содержать питомца, то Вы можете отдать его в приют,
+                    чтобы питомец нашел новый отличный дом.
+            </p>
+        </mat-card-content>
+      </mat-card>
+    </a>  
+    <a class="cont-card">
+        <mat-card class="info-card">
+          <mat-card-header>
+              <mat-card-title>Отлов на базе нашего приюта</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <p>
+                Вы можете оставить заявку на отлов бездомных животных.
+              </p>
+          </mat-card-content>
+        </mat-card>
+      </a>  
+      <a class="cont-card">
+        <mat-card class="info-card">
+          <mat-card-header>
+              <mat-card-title>Стать волонтером приюта</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <p>
+                Приюту всегда нужна помощь с выгулом,
+                распространением информации, любая материальная помощь и Вы можете нам помочь.
+              </p>
+          </mat-card-content>
+        </mat-card>
+      </a>  
+</div>
+    
+          
+  </div>

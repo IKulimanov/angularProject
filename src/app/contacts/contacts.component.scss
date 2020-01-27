@@ -1,0 +1,50 @@
+.container{padding-top: 50px;
+    padding-bottom: 50px;}
+    .header{
+        line-height: 1.25;
+    font-weight: 400;
+    display: block;
+    text-align: center;
+    margin: 0 auto 15px;
+    width: 100%;
+    max-width: 940px;
+    min-width: 100px;
+    word-break: break-word;
+    font-size: 3rem;
+    }
+    .real-img{
+      background-image: url("../../images/contacts.jpg");
+      height: 400px;
+      width: 50%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: inline-block;
+        
+    }
+    
+    .content > div{
+      float: left;
+      width: 47%;
+      margin-right: 3%;
+    }
+    
+    .content
+    {
+      
+      padding-left: 100px;
+      padding-right: 100px;
+     
+      
+    }
+    
+    .text-content{
+      
+    
+    
+       font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.857;
+      letter-spacing: .3px;
+     
+      display: inline-block;
+    }

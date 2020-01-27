@@ -1,15 +1,63 @@
-mat-grid-tile{
-    background-color: blue;
-}
-mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-    height: 100%;
-}
- 
-mat-sidenav {
-    width: 250px;
+.container{
+  //padding-left: 30px;
+  padding-top: 50px;
+    padding-bottom: 50px;}
+    .header{
+        line-height: 1.25;
+    font-weight: 400;
+    display: block;
+    text-align: center;
+    margin: 0 auto 15px;
+    width: 100%;
+    max-width: 940px;
+    min-width: 100px;
+    word-break: break-word;
+    font-size: 3rem;
+    }
+    .real-img{
+        
+      background-image: url("../../images/logo.png") ;
+      height: 300px;
+        width: 300px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+
+
+.text-take{
+  width: 100%;
 }
 
-main {
-    margin: 0%;
+.header-take{
+  font-weight: 700;
+  font-size: .857rem;
+  line-height: 1.333;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.info-card{
+  max-width: 400px;
+}
+
+.tabl-info{
+  margin: 20px;
+  
+
 
 }
+.cont-card{
+  display: inline-block;
+  margin: 20px;
+  vertical-align: top;
+}
+p{
+  text-indent: 1.5em;
+}
+

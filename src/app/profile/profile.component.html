@@ -1,5 +1,87 @@
 <app-nav-frame (sidenavToggle)="sidenav.toggle()"></app-nav-frame>
 
+<div class="container">
+    <div class="header">
+        Личный кабинет
+    </div>
+    <div class="content">
+        <br class="text-content" >
+            <p>
+                <mat-form-field>
+                    <div class="input-header">Логин</div>
+                    <input matInput name="login" 
+                    type="text"
+                    [(ngModel)]="login" />
+                </mat-form-field>
+            </p>
+             
+            <p>
+                <mat-form-field>
+                    <div class="input-header">Почта</div>
+                    <input matInput name="email" 
+                    type="text"
+                    [(ngModel)]="email"/>
+                </mat-form-field>
+            </p>
 
+         
+            <p>
+                <mat-form-field>
+                    <div class="input-header">Имя</div>
+                    <input matInput name="firstname" 
+                    
+                    type="text"
+                    [(ngModel)]="firstname"/>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <div class="input-header">Фамилия</div>
+                    <input matInput name="lastname" 
+                    type="text"
+          
+                    [(ngModel)]="lastname"/>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <div class="input-header">Телефон</div>
+                    <input matInput name="telephone" 
+                    type="text"
+                 
+                    [(ngModel)]="telephone"/>
+                    
+                </mat-form-field>
+            </p>
 
-<p>profile works!</p>
+            <p>
+                <mat-form-field>
+                    <div class="input-header">Возраст</div>
+                    <input matInput name="age" 
+                    type="text"
+       
+                    [(ngModel)]="age"/>      
+                </mat-form-field>
+            </p>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          Хочу оставить питомца
+                        </mat-panel-title> 
+                        <mat-panel-description>Заполните поля и нажмите отправить заявку, если вы указали номер телефона в профиле, Вам обязательно перезвонят</mat-panel-description> 
+                      </mat-expansion-panel-header>
+                      <p>   <input matInput name="name_pet" type="text" [(ngModel)]="name_pet" placeholder="Имя питомца"></p>
+                      <p>  <input matInput name="type" type="text" [(ngModel)]="type_pet" placeholder="Тип питомца"></p>
+                      <p>   <input matInput name="age_pet" type="text" [(ngModel)]="age_pet" placeholder="Возраст питомца"></p>
+                      <p>   <input matInput name="gender_pet" type="text" [(ngModel)]="gender_pet" placeholder="Пол питомца"></p>
+                      <div class = "button">
+                        <button class = "md-cust-btn"  mat-raised-button type='button' 
+                         color="primary" (click)="givepet();"  > Отправить заявку </button>
+                    </div>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                 
+    
+        </div>          
+    </div>

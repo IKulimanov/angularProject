@@ -1,0 +1,39 @@
+.this-card{
+    max-width: 400px;
+  }
+  
+.tabl-animals{
+margin: 20px;
+display: flex;
+flex-wrap: wrap;
+margin: 0 -10px;
+
+}
+.animal-card :host ::ng-deep{
+display: inline-block;
+margin: 20px;
+vertical-align: top;
+
+}
+p{
+text-indent: 1.5em;
+}
+
+.card-cont{
+  display: inline-block;
+  align-content: flex-start;
+  
+  width: 20%;
+  height: 210px;
+ 
+}
+
+.item1{
+  background-image: url("../../images/1/1.jpeg");
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  align-content: flex-start;
+  
+}
