@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../services/rest.service';
+import { Url } from 'url';
 
 
 
@@ -8,7 +9,8 @@ export class AnimalComponent  {
   public name: string;
     public age: number;
     public gender: string;
-    public date_req: string;
-    public description: string
+    public type: string;
+    public image: string;
+
   constructor() { }
 }

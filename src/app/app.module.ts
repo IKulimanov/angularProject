@@ -33,9 +33,9 @@ import { MatSnackBarModule} from '@angular/material';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material';
-
-
-
+import { MatDialogModule } from '@angular/material';
+import { AnimalDialogReqComponent } from './animal-dialog-req/animal-dialog-req.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +48,10 @@ import {MatPaginatorModule} from '@angular/material';
     AnimalsComponent,
     ProfileComponent,
     CustomSnackBarComponent,
-  
+    AnimalDialogReqComponent,
+    AdminProfileComponent
   ],
-  entryComponents:[CustomSnackBarComponent, AnimalsComponent],
+  entryComponents:[CustomSnackBarComponent, AnimalsComponent, AnimalDialogReqComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -75,7 +76,8 @@ import {MatPaginatorModule} from '@angular/material';
     ReactiveFormsModule,
     MatExpansionModule,
     MatCheckboxModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [
     RestService

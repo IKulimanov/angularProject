@@ -1,0 +1,40 @@
+<div class="modal-frame">
+    <div class="image-pet"></div>
+    <div class="description-pet">
+        <p>
+
+
+        </p>
+        
+        
+        <p>
+            <mat-form-field>
+                <input matInput required name="is_child"
+                placeholder="У вас есть маленькие дети?(Да/Нет)"
+                type="text"
+                [(ngModel)]="is_child" >
+            </mat-form-field>
+          </p>  
+                  <p>
+            <mat-form-field>
+                <input matInput required name="is_pets"
+                placeholder="У вас есть домашние питомцы?(Да/Нет)"
+                type="text"
+                [(ngModel)]="is_pets" >
+            </mat-form-field>
+          </p>  
+          <p>
+            <mat-form-field>
+                <input matInput required name="is_house"
+                placeholder="Вы живёте в частном доме?(Да/Нет)"
+                type="text"
+                [(ngModel)]="is_house" >
+            </mat-form-field>
+          </p>  
+
+          <div class = "button">
+            <button class = "md-cust-btn"  mat-raised-button type='button' 
+             color="primary" (click)="doReqGive()" routerLink="/animals" > Забрать питомца </button>
+         </div>
+    </div> 
+</div>

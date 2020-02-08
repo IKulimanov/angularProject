@@ -28,6 +28,7 @@ export class LoggedComponent implements OnInit {
    * При нажатии на кнопку "войти"
    */
   public doLogin() {
+    localStorage.setItem('login',this.login)
     console.log('login: ' + this.login);
     console.log('password: ' + this.password);
     const params = {
@@ -38,22 +39,15 @@ export class LoggedComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
       });
+      
   }
-
-  /**
-   * При нажатии на кнопку "регистрация"
-   */
-  public doReg() {
-    console.log('login: ' + this.login);
-    console.log('password: ' + this.password);
-    const params = {
-      login: this.login,
-      password: this.password
-    };
-    this.restService.doCall('doReg', params)
+  public doTest() {
+    let sdasd = this.restService.doGet('get')
       .subscribe((res: any) => {
         console.log(res);
+        console.log(sdasd);
       });
+      
   }
 
 }

@@ -1,110 +1,123 @@
-import { Component, OnInit, ViewEncapsulation, Input,  ViewChild, ChangeDetectorRef  } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
+import { Component, Inject, OnInit, ViewEncapsulation, Input,  ViewChild, ChangeDetectorRef  } from '@angular/core';
+import { MatCardModule, MatCard } from '@angular/material/card';
 import{ AnimalComponent } from '../animal/animal.component';
 import { Observable } from 'rxjs';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatPaginator} from '@angular/material';
 import { FormBuilder } from '@angular/forms';
 import {RestService} from '../services/rest.service';
+import { AnimalDialogReqComponent } from '../animal-dialog-req/animal-dialog-req.component';
+import { MatDialog } from '@angular/material';
+import {PageEvent} from '@angular/material/paginator';
+
+
 @Component({
   selector: 'app-animals',
   templateUrl: './animals.component.html',
   styleUrls: ['./animals.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  
 })
 export class AnimalsComponent implements OnInit {
+  @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
    page: number;
-
-   collectionSize: number;
-
-
-
-   itemsPerPage: number = 8;
-
+   length = 100;
+   pageSize = 8;
+   pageSizeOptions: number[] = [5, 10, 25, 100];
+   obs: Observable<any>;
+   datasource = new MatTableDataSource<MatCard>();
+ 
+   // MatPaginator Output
+   pageEvent: PageEvent;
  
     animals:AnimalComponent[] = [{
       id:1,
-      name: "Bobik",
+      name: "Сэм",
       age: 2,
-      date_req: "12-12-2020",
-      gender: "female",
-      description: ""
+      type: "dog",
+      gender: "male",
+      image: "https://ik.imagekit.io/a0bvwbc2p/2_dWhtlw-ts.jpg"
     },{
       id:2,
-      name: "Sharik",
+      name: "Шарик",
       age: 5,
-      date_req: "1-1-2020",
+      type: "dog",
       gender: "male",
-      description: ""
+      image:"https://ik.imagekit.io/a0bvwbc2p/6_Oe1iWD8faG.jpeg"
 
     },{
       id:3,
-      name: "Sharik",
+      name: "Дружок",
       age: 5,
-      date_req: "1-1-2020",
+      type: "dog",
       gender: "male",
-      description: ""
+      image:"https://ik.imagekit.io/a0bvwbc2p/7_PRd2jcZQh.jpeg"
 
     },{
       id:4,
-      name: "Sharik",
+      name: "Пудинг",
       age: 5,
-      date_req: "1-1-2020",
+      type: "dog",
       gender: "male",
-      description: ""
+      image:"https://ik.imagekit.io/a0bvwbc2p/3_0NnbNWAVcW.jpg"
     },{
       id:5,
-      name: "Sharik",
+      name: "Джек",
       age: 5,
-      date_req: "1-1-2020",
+      type: "dog",
       gender: "male",
-      description: ""
-    },{id:6,
-    name: "Sharik",
+      image:"https://ik.imagekit.io/a0bvwbc2p/1_-0Cjpt_kiM.jpg"
+    },
+    {
+      id:6,
+     name: "Лесси",
     age: 5,
-    date_req: "1-1-2020",
-    gender: "male",
-    description: ""},
+    type: "dog",
+    gender: "female",
+    image:"https://ik.imagekit.io/a0bvwbc2p/4_-2mbsKSwiX.jpg"
+    },
     {
       id:7,
-      name: "Sharik",
+      name: "Снежинка",
       age: 5,
-      date_req: "1-1-2020",
-      gender: "male",
-      description: ""
+      type: "dog",
+      gender: "female",
+      image:"https://ik.imagekit.io/a0bvwbc2p/5_a4B5S4gS0.jpg"
     },{
       id:8,
-      name: "Sharik",
+      name: "Куджо",
       age: 5,
-      date_req: "1-1-2020",
+      type: "dog",
       gender: "male",
-      description: ""
-    },
-   
+      image:"https://ik.imagekit.io/a0bvwbc2p/8_b3_WaG39i.jpg"
+    }
 ];
-    constructor(private restService: RestService) {
+    constructor(private restService: RestService,public dialog: MatDialog) {
       this.page = 1;
-      this.loadPage();
     }
 
-    ngOnInit() {
-      
-    }
-    onPageChanged() {
-      this.loadPage();
-    }
-  
-    private loadPage(){
-      this.restService.doGetAnimals(this.page, this.itemsPerPage, "getanimals()")
-      .subscribe(p => {
-        debugger;
-        this.animals = p.rows;
-        this.collectionSize = p.totalCount;
+    openDialog(): void {
+      const dialogRef = this.dialog.open(AnimalDialogReqComponent,{
       });
   
-    
-
-
- 
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
     }
+    public doGetAnimal() {
+      this.restService.doGet('doGetAnimal')
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+      }
+  
+
+    ngOnInit() {
+      this.datasource.paginator = this.paginator;
+      this.obs = this.datasource.connect();
+    }
+   
+  
+
+   
   }
+  
 

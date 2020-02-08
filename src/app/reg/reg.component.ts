@@ -93,7 +93,7 @@ export class RegComponent implements OnInit {
       ntf_cat: this.ntf_cat,
       ntf_bird: this.ntf_bird,
       ntf_griz: this.ntf_griz,
-      is_volon: this.is_volon
+      reqvol: this.is_volon
 
     };
     this.restService.doCall('doAccauntReg', params)

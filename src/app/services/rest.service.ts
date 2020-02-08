@@ -34,7 +34,7 @@ export class RestService {
       }));
   }
 
-  public doGet(methodName: string) {
+  public doGet(methodName: string): Observable<any>{
     const url = RestService.DEFAULT_PATH + methodName;
     console.log('calling ' + methodName);
     const options = {

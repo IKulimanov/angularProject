@@ -1,17 +1,19 @@
 <app-nav-frame (sidenavToggle)="sidenav.toggle()"></app-nav-frame>
 
 <div class="tabl-animals" id = "div-animals"  >
-    <mat-card class="card-cont" *ngFor="let animal of animals" [hidden] = "formData[0].display == true"  >
-       <mat-card-title>{{animal.name}}</mat-card-title>     
-       <mat-card-content class="item1">
-   
-    </mat-card-content>
+    <mat-card class="card-cont" *ngFor="let animal of animals" >
+        <mat-card-title>{{animal.name}}</mat-card-title>    
+        <a (click)="openDialog()"> 
+            <mat-card-content  class="item1"  >
+               <img [src]="animal.image" width="100%" height="200px">
+            </mat-card-content>
+        </a> 
     </mat-card>
-    <!--<ngb-pagination class="d-flex justify-content-center" 
-    [collectionSize]="collectionSize" 
-    [pageSize]="itemsPerPage"
-     [(page)]="page" 
-     [boundaryLinks]="true" 
-     (pageChange)="onPageChanged($event)">
-    </ngb-pagination>-->
+   
 </div>
+<a class="btn">
+<button class = "md-cust-btn-reg" 
+mat-button type = "submit" routerLink="/animals"  ><</button>
+<button class = "md-cust-btn-reg" 
+mat-button type = "submit" routerLink="/animals" >></button>
+</a>
