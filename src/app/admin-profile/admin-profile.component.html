@@ -1,11 +1,20 @@
 <app-nav-frame (sidenavToggle)="sidenav.toggle()"></app-nav-frame>
-
-<div class="container">
-    <div class="header">
-        Личный кабинет
-    </div>
+<div class="main">
+<mat-list class="list1">
+    <mat-list-item><button class = "md-cust-btn"  mat-raised-button type='button' 
+        color="primary" (click)="toggle1()">Пользователи</button></mat-list-item>
+    <mat-list-item><button class = "md-cust-btn"  mat-raised-button type='button' 
+        color="primary" (click)="toggle2()">Питомцы</button></mat-list-item>
+    <mat-list-item><button class = "md-cust-btn"  mat-raised-button type='button' 
+        color="primary" (click)="toggle3()"> Заявки на забор питомцев</button></mat-list-item>
+    <mat-list-item><button class = "md-cust-btn"  mat-raised-button type='button' 
+        color="primary" (click)="toggle4()">Заявки на отдачу питомцев</button></mat-list-item>
     
-                 
-    
-        </div>          
-   
+</mat-list>
+<div class="content">
+    <app-table-user *ngIf="tab1"></app-table-user>
+    <app-table-pet *ngIf="tab2">></app-table-pet>
+    <app-table-req-take *ngIf="tab3"></app-table-req-take>
+    <app-table-req-give *ngIf="tab4"></app-table-req-give>
+</div>
+</div>>

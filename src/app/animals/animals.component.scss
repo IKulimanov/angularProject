@@ -52,6 +52,31 @@ a{
   width: 100%;
   height: 100%;
 }
+
+.butSup{
+  display: inline-block;
+  margin-left: 20px;
+}
+
 .btn{
   align-items: center;
+}
+
+
+.paginator{
+
+  display: block;
+}
+.form1, .buttonLeftPage, .buttonRightPage{
+  display: inline-block;
+  align-content: flex-end;
+ 
+}
+.list1{
+  display:inline-block;
+  align-content: flex-end;
+}
+
+.optitems{
+  margin-left: 20px;
 }

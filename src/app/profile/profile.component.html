@@ -6,64 +6,15 @@
     </div>
     <div class="content">
         <br class="text-content" >
-            <p>
-                <mat-form-field>
-                    <div class="input-header">Логин</div>
-                    <input matInput name="login" 
-                    type="text"
-                    [(ngModel)]="login" />
-                </mat-form-field>
-            </p>
-             
-            <p>
-                <mat-form-field>
-                    <div class="input-header">Почта</div>
-                    <input matInput name="email" 
-                    type="text"
-                    [(ngModel)]="email"/>
-                </mat-form-field>
-            </p>
-
-         
-            <p>
-                <mat-form-field>
-                    <div class="input-header">Имя</div>
-                    <input matInput name="firstname" 
-                    
-                    type="text"
-                    [(ngModel)]="firstname"/>
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <div class="input-header">Фамилия</div>
-                    <input matInput name="lastname" 
-                    type="text"
-          
-                    [(ngModel)]="lastname"/>
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field>
-                    <div class="input-header">Телефон</div>
-                    <input matInput name="telephone" 
-                    type="text"
-                 
-                    [(ngModel)]="telephone"/>
-                    
-                </mat-form-field>
-            </p>
-
-            <p>
-                <mat-form-field>
-                    <div class="input-header">Возраст</div>
-                    <input matInput name="age" 
-                    type="text"
-       
-                    [(ngModel)]="age"/>      
-                </mat-form-field>
-            </p>
-                <mat-accordion>
+        <mat-list class="list" >
+            <mat-list-item>Логин: {{login}}</mat-list-item>
+            <mat-list-item>Email: {{email}}</mat-list-item>
+            <mat-list-item>Имя: {{firstname}}</mat-list-item>
+            <mat-list-item>Фамилия: {{lastname}}</mat-list-item>
+            <mat-list-item>Телефон: {{phone}}</mat-list-item>
+            <mat-list-item>Возраст: {{age}}</mat-list-item>
+        </mat-list>
+                <mat-accordion class="accord">
                     <mat-expansion-panel>
                       <mat-expansion-panel-header>
                         <mat-panel-title>
@@ -71,17 +22,54 @@
                         </mat-panel-title> 
                         <mat-panel-description>Заполните поля и нажмите отправить заявку, если вы указали номер телефона в профиле, Вам обязательно перезвонят</mat-panel-description> 
                       </mat-expansion-panel-header>
-                      <p>   <input matInput name="name_pet" type="text" [(ngModel)]="name_pet" placeholder="Имя питомца"></p>
-                      <p>  <input matInput name="type" type="text" [(ngModel)]="type_pet" placeholder="Тип питомца"></p>
-                      <p>   <input matInput name="age_pet" type="text" [(ngModel)]="age_pet" placeholder="Возраст питомца"></p>
-                      <p>   <input matInput name="gender_pet" type="text" [(ngModel)]="gender_pet" placeholder="Пол питомца"></p>
+                      <p> <input matInput name="name_pet" type="text" [(ngModel)]="name_pet" placeholder="Имя питомца"></p>
+                      <p> <input matInput name="type" type="text" [(ngModel)]="type_pet" placeholder="Тип питомца"></p>
+                      <p> <input matInput name="age_pet" type="text" [(ngModel)]="age_pet" placeholder="Возраст питомца"></p>
+                      <p> <input matInput name="gender_pet" type="text" [(ngModel)]="gender_pet" placeholder="Пол питомца"></p>
                       <div class = "button">
                         <button class = "md-cust-btn"  mat-raised-button type='button' 
                          color="primary" (click)="givepet();"  > Отправить заявку </button>
                     </div>
                     </mat-expansion-panel>
                   </mat-accordion>
-                 
+
+                
+                  
+                  </div>
     
+                  <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource">
+                  
+                  
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="namepet">
+                        <th mat-header-cell *matHeaderCellDef> NamePet </th>
+                        <td mat-cell *matCellDef="let element"> {{element.namepet}} </td>
+                      </ng-container>
+                  
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="type">
+                        <th mat-header-cell *matHeaderCellDef> TypePet </th>
+                        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                      </ng-container>
+                  
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status </th>
+                        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                      </ng-container>
+                  
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <div class = "buttonOne">
+                        <button class = "md-cust-btn"  mat-raised-button type='button' 
+                         color="primary" (click)="gettakepet();"  > Заявки на забор </button>
+                    </div>
+                    <div class = "buttonTwo">
+                        <button class = "md-cust-btn"  mat-raised-button type='button' 
+                         color="primary" (click)="getgivepet();"  > Заявки на отдачу </button>
+                    </div>
+             
         </div>          
     </div>

@@ -7,6 +7,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { VolunteerComponent } from './volunteer/volunteer.component';
 import { AnimalsComponent } from './animals/animals.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 const routes: Routes = [
   {
     path:'logged',
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path:'profile',
     component: ProfileComponent
+  },
+  {
+    path:'adminprofile',
+    component: AdminProfileComponent
   }
 ];
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../services/rest.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import { ShareService } from '../share.service';
 @Component({
   selector: 'app-animal-dialog-req',
   templateUrl: './animal-dialog-req.component.html',
@@ -8,26 +9,25 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 })
 export class AnimalDialogReqComponent implements OnInit {
 
-  constructor(private restService: RestService, public dialoge: MatDialog) { }
+  constructor(private share: ShareService,private restService: RestService, public dialoge: MatDialog) {
+    this.share.onClick.subscribe(idpet=>this.idpet = idpet)
+   }
+  idpet: number;
+  selectedPet: boolean = false;
+  selectedChild: boolean = false;
+  selectedHouse: boolean =  false;
 
-  public is_child;
-  public is_house;
-  public is_pets;
-  public is_login;
   public doReqGive() {
     this.dialoge.closeAll();
-    console.log('is_child: ' + this.is_child);
-    console.log('is_house: ' + this.is_house);
-    console.log('is_pets: ' + this.is_pets);
-    console.log('is_login: ' + localStorage['login'])
+    
     const params = {
-      
-      is_child: this.is_child,
-      is_house: this.is_house,
-      is_pets: this.is_pets,
-      is_login: localStorage['login']
+      login: localStorage['login'],
+      idAnimal: this.idpet,
+      childs: this.selectedChild,
+      pets: this.selectedPet,
+      house: this.selectedHouse
     };
-    this.restService.doCall('doReqGive', params)
+    this.restService.doCall('doReqAnimalTake', params)
       .subscribe((res: any) => {
         console.log(res);
       });

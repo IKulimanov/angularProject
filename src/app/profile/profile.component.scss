@@ -1,3 +1,56 @@
 .content{
     padding-left: 50px;
 }
+
+.container{padding-top: 50px;
+    padding-bottom: 50px;}
+
+.header{
+    line-height: 1.25;
+font-weight: 400;
+display: block;
+text-align: center;
+margin: 0 auto 15px;
+width: 100%;
+max-width: 940px;
+min-width: 100px;
+word-break: break-word;
+font-size: 3rem;
+}
+
+table{
+    width: 100%;
+}
+.input-page{
+    width: 30px;
+    text-align: center;
+}
+
+.buttonOne, .buttonTwo{
+    display: inline-block;
+}
+
+.paginator{
+
+    display: block;
+}
+.form1, .buttonLeftPage, .buttonRightPage{
+    display: inline-block;
+    align-content: flex-end;
+   
+}
+
+.list{
+    display: inline-block;
+    height: 300px;
+}
+
+.accord{
+    display: inline-block;
+    height: 200px;
+}
+
+.list1{
+    display:inline-block;
+    align-content: flex-end;
+}

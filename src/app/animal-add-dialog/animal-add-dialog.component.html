@@ -1,0 +1,57 @@
+<div class="modal-frame">
+
+	<p>
+            <mat-form-field>
+                <input matInput required name="petid"
+                placeholder="Введите id"
+                type="text"
+                [(ngModel)]="petid" >
+            </mat-form-field>
+          </p>  
+          
+        <p>
+            <mat-form-field>
+                <input matInput required name="name"
+                placeholder="Введите имя добавляемого питомца"
+                type="text"
+                [(ngModel)]="name" >
+            </mat-form-field>
+          </p>  
+          <p>
+                <mat-form-field>
+                    <mat-select class="select" [(ngModel)] = "selected">
+                      <mat-option>Тип питомца</mat-option>
+                      <mat-option value="cat">Кошка</mat-option>
+                      <mat-option value="dog">Собака</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+          </p>  
+          <p>
+            <mat-form-field>
+                <input matInput required name="age"
+                placeholder="Введите возраст питомца"
+                type="text"
+                [(ngModel)]="age" >
+            </mat-form-field>
+          </p>  
+          <p>
+            <mat-form-field>
+                <input matInput required name="gender"
+                placeholder="Введите пол питомца"
+                type="text"
+                [(ngModel)]="gender" >
+            </mat-form-field>
+          </p>  
+          <p>
+            <mat-form-field>
+                <input type="file"
+                       id="file"
+                      (change)="handleFileInput($event.target.files)">
+            </mat-form-field>
+          </p>  
+
+          <div class = "button">
+            <button class = "md-cust-btn"  mat-raised-button type='button' 
+             color="primary" (click)="uploadFileToActivity()" > Добавить питомца </button>
+         </div>
+</div>

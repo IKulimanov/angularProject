@@ -9,7 +9,7 @@ import {RestService} from '../services/rest.service';
   styleUrls: ['./reg.component.scss']
 })
 export class RegComponent implements OnInit {
-  
+  public reqIsUserLogin: string;
   /**
    * Имя пользователя
    */
@@ -63,6 +63,18 @@ export class RegComponent implements OnInit {
     this.snackBar.open(message);
   }
   
+  searchUser(){
+    const params = {
+      login: this.login,
+      password: this.password,
+      email: this.email}
+      this.restService.doCall('doSearchLogin', params)
+      .subscribe((res: any) => {
+        this.reqIsUserLogin = res;
+        console.log(res);
+      });
+  }
+
   openCustomSnackBar(){
     this.snackBar.openFromComponent(CustomSnackBarComponent, {duration:2000});
   }

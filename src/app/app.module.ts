@@ -36,6 +36,14 @@ import {MatPaginatorModule} from '@angular/material';
 import { MatDialogModule } from '@angular/material';
 import { AnimalDialogReqComponent } from './animal-dialog-req/animal-dialog-req.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { MatTableModule} from '@angular/material';
+import { TableUserComponent } from './table-user/table-user.component';
+import { TablePetComponent } from './table-pet/table-pet.component';
+import { AnimalAddDialogComponent } from './animal-add-dialog/animal-add-dialog.component';
+import { TableReqTakeComponent } from './table-req-take/table-req-take.component';
+import { TableReqGiveComponent } from './table-req-give/table-req-give.component';
+import { FooterComponent } from './footer/footer.component';
+import { PrivetComponent } from './privet/privet.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,9 +57,16 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     ProfileComponent,
     CustomSnackBarComponent,
     AnimalDialogReqComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    TableUserComponent,
+    TablePetComponent,
+    AnimalAddDialogComponent,
+    TableReqTakeComponent,
+    TableReqGiveComponent,
+    FooterComponent,
+    PrivetComponent
   ],
-  entryComponents:[CustomSnackBarComponent, AnimalsComponent, AnimalDialogReqComponent],
+  entryComponents:[CustomSnackBarComponent, AnimalsComponent, AnimalDialogReqComponent, AnimalAddDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -77,7 +92,8 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     MatExpansionModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     RestService

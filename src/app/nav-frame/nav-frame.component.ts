@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-nav-frame',
@@ -16,6 +17,16 @@ export class NavFrameComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private routerLink: Router) {}
 
+  isLogged(){
+    console.log("hello");
+    if (localStorage.getItem("role")=="user"){
+      this.routerLink.navigate(["profile"]);
+    }
+    else if (localStorage.getItem("role") == "admin"){
+      this.routerLink.navigate(["adminprofile"]);
+    }
+    this.routerLink.navigate(["logged"]);
+  }
 }

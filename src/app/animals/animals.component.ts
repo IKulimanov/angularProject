@@ -1,14 +1,13 @@
 import { Component, Inject, OnInit, ViewEncapsulation, Input,  ViewChild, ChangeDetectorRef  } from '@angular/core';
-import { MatCardModule, MatCard } from '@angular/material/card';
 import{ AnimalComponent } from '../animal/animal.component';
-import { Observable } from 'rxjs';
 import { MatTableDataSource, MatPaginator} from '@angular/material';
 import { FormBuilder } from '@angular/forms';
 import {RestService} from '../services/rest.service';
 import { AnimalDialogReqComponent } from '../animal-dialog-req/animal-dialog-req.component';
 import { MatDialog } from '@angular/material';
 import {PageEvent} from '@angular/material/paginator';
-
+import {FormControl} from '@angular/forms';
+import { ShareService } from '../share.service'
 
 @Component({
   selector: 'app-animals',
@@ -18,102 +17,113 @@ import {PageEvent} from '@angular/material/paginator';
 })
 export class AnimalsComponent implements OnInit {
   @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
-   page: number;
-   length = 100;
-   pageSize = 8;
-   pageSizeOptions: number[] = [5, 10, 25, 100];
-   obs: Observable<any>;
-   datasource = new MatTableDataSource<MatCard>();
+  idpet: number; 
+  page: number;
+   type: string;
+   gender: string;
+   age: number;
+   active: boolean;
+   pageSize = 0;
+   selectedType: string;
+   selectedGen: string;
+   selectedAge: string;
+   
+
  
    // MatPaginator Output
    pageEvent: PageEvent;
- 
-    animals:AnimalComponent[] = [{
-      id:1,
-      name: "Сэм",
-      age: 2,
-      type: "dog",
-      gender: "male",
-      image: "https://ik.imagekit.io/a0bvwbc2p/2_dWhtlw-ts.jpg"
-    },{
-      id:2,
-      name: "Шарик",
-      age: 5,
-      type: "dog",
-      gender: "male",
-      image:"https://ik.imagekit.io/a0bvwbc2p/6_Oe1iWD8faG.jpeg"
+   animals:AnimalComponent[];
 
-    },{
-      id:3,
-      name: "Дружок",
-      age: 5,
-      type: "dog",
-      gender: "male",
-      image:"https://ik.imagekit.io/a0bvwbc2p/7_PRd2jcZQh.jpeg"
+   rightPage()
+   {
+     if (this.page < this.pageSize){
+      this.page++;
+      this.doGetAnimal();
+     }
+     
+   }
 
-    },{
-      id:4,
-      name: "Пудинг",
-      age: 5,
-      type: "dog",
-      gender: "male",
-      image:"https://ik.imagekit.io/a0bvwbc2p/3_0NnbNWAVcW.jpg"
-    },{
-      id:5,
-      name: "Джек",
-      age: 5,
-      type: "dog",
-      gender: "male",
-      image:"https://ik.imagekit.io/a0bvwbc2p/1_-0Cjpt_kiM.jpg"
-    },
-    {
-      id:6,
-     name: "Лесси",
-    age: 5,
-    type: "dog",
-    gender: "female",
-    image:"https://ik.imagekit.io/a0bvwbc2p/4_-2mbsKSwiX.jpg"
-    },
-    {
-      id:7,
-      name: "Снежинка",
-      age: 5,
-      type: "dog",
-      gender: "female",
-      image:"https://ik.imagekit.io/a0bvwbc2p/5_a4B5S4gS0.jpg"
-    },{
-      id:8,
-      name: "Куджо",
-      age: 5,
-      type: "dog",
-      gender: "male",
-      image:"https://ik.imagekit.io/a0bvwbc2p/8_b3_WaG39i.jpg"
+   leftPage(){
+     if (this.page>1){
+       this.page--;
+      this.doGetAnimal();
     }
-];
-    constructor(private restService: RestService,public dialog: MatDialog) {
+    
+  }
+
+   
+    constructor(private share: ShareService,private restService: RestService,public dialog: MatDialog) {
       this.page = 1;
+      this.share.onClick.subscribe(idpet => this.idpet  = idpet);
     }
+
+
 
     openDialog(): void {
+      this.share.doClick();
       const dialogRef = this.dialog.open(AnimalDialogReqComponent,{
+      
       });
   
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
       });
     }
+
+    public getPageAnimal() {
+    
+       this.restService.doGet('getPage')
+         .subscribe((res: any) => {
+           this.pageSize = res;
+           console.log(res);
+         });
+       }
+
     public doGetAnimal() {
-      this.restService.doGet('doGetAnimal')
+     switch (this.selectedType){
+       case undefined: {this.type = "any"; break;}
+       case "cat": {this.type = "cat"; break;}
+       case "dog": {this.type = "dog"; break;}
+       default: {break;}
+     }
+     switch (this.selectedAge){
+      case undefined: {this.age = 0; break;}
+      case "ageOne": {this.age = 1; break;}
+      case "ageTwo": {this.age = 2; break;}
+      case "ageTree": {this.age = 3; break;}
+      case "ageFour": {this.age = 4; break;}
+      default: {break;}
+    }
+    switch (this.selectedGen){
+      case undefined: {this.gender = "any"; break;}
+      case "female": {this.gender = "female"; break;}
+      case "male": {this.gender = "male"; break;}
+      default: {break;}
+    }
+      const params = {
+        page: this.page,
+        type: this.type,
+        gender: this.gender,
+        age: this.age,
+        active: this.active
+        
+      };
+      this.restService.doCall('getAnimal',params)
         .subscribe((res: any) => {
+          this.animals = res;
           console.log(res);
+          
         });
+        this.getPageAnimal();
       }
   
 
     ngOnInit() {
-      this.datasource.paginator = this.paginator;
-      this.obs = this.datasource.connect();
+     this.page = 1;
+     this.active = true;  
+     this.doGetAnimal();
     }
+   
    
   
 
